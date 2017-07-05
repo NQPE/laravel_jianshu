@@ -10,8 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    dd(\App\Models\Test::all());
-    return view('welcome');
-});
+//文章列表页
+Route::get('/posts','PostController@index');
+//文章详情页
+Route::get('/posts/{id}','PostController@show');
+//创建文章
+Route::get('/posts/create','PostController@create');
+Route::post('/posts/save','PostController@save');
+//编辑文章
+Route::get('/posts/edit/{id}','PostController@edit');
+Route::post('/posts/update/{id}','PostController@update');
+//删除文章
+Route::get('/posts/delete/{id}','PostController@delete');
