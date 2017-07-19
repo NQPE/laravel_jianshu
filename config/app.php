@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,12 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh',
+
+    /**
+     * faker mock data in Chinese
+     */
+    'faker_locale'=>'zh_CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +182,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //debugbar
+        Barryvdh\Debugbar\ServiceProvider::class,
+
+        //ES
+        Laravel\Scout\ScoutServiceProvider::class,
+        ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
+
     ],
 
     /*
@@ -225,7 +237,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        //debugbar
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

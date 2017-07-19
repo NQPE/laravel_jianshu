@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BaseModel extends Model
 {
@@ -12,4 +13,8 @@ class BaseModel extends Model
      * @var array
      */
     protected $guarded = [];
+    /**
+     * 软删除
+     */
+    use SoftDeletes;
 }

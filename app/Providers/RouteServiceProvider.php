@@ -39,7 +39,11 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        //添加测试路由
+        $this->mapTestRoutes();
+
+        //添加后台管理路由
+        $this->mapAdminRoutes();
     }
 
     /**
@@ -69,5 +73,27 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * 添加测试路由
+     */
+    protected function mapTestRoutes()
+    {
+        Route::middleware('web')
+            ->prefix('test')
+            ->namespace($this->namespace.'\Test')
+            ->group(base_path('routes/test.php'));
+    }
+
+    /**
+     * 后台管理路由
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::middleware('web')
+            ->prefix('admin')
+            ->namespace('App\Admin\Controllers')
+            ->group(base_path('routes/admin.php'));
     }
 }
